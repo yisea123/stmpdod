@@ -1,0 +1,123 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;/*-----------------------------------------------------
+                       -----------------------
+    2 00000000         ; *      RL-ARM - RTX
+    3 00000000         ; *-----------------------------------------------------
+                       -----------------------
+    4 00000000         ; *      Name:    SVC_TABLE.S
+    5 00000000         ; *      Purpose: Pre-defined SVC Table for CORTEX M3
+    6 00000000         ; *      Rev.:    V4.12
+    7 00000000         ; *-----------------------------------------------------
+                       -----------------------
+    8 00000000         ; *      This code is part of the RealView Run-Time Libr
+                       ary.
+    9 00000000         ; *      Copyright (c) 2004-2010 KEIL - An ARM Company. 
+                       All rights reserved.
+   10 00000000         ; *-----------------------------------------------------
+                       ----------------------*/
+   11 00000000         
+   12 00000000         
+   13 00000000                 AREA             SVC_TABLE, CODE, READONLY
+   14 00000000         
+   15 00000000                 EXPORT           SVC_Count
+   16 00000000         
+   17 00000000 00000001 
+                       SVC_Cnt EQU              (SVC_End-SVC_Table)/4
+   18 00000000 00000001 
+                       SVC_Count
+                               DCD              SVC_Cnt
+   19 00000004         
+   20 00000004         ; Import user SVC functions here.
+   21 00000004                 IMPORT           __SVC_1
+   22 00000004         
+   23 00000004                 EXPORT           SVC_Table
+   24 00000004         SVC_Table
+   25 00000004         ; Insert user SVC functions here. SVC 0 used by RTL Kern
+                       el.
+   26 00000004 00000000        DCD              __SVC_1     ; user SVC function
+                                                            
+   27 00000008         
+   28 00000008         SVC_End
+   29 00000008         
+   30 00000008                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\obj\svc_table.d -o.\obj\svc_table.o -IE:\Keil_v5\ARM\RV31\INC
+ -IE:\Keil_v5\ARM\CMSIS\Include -IE:\Keil_v5\ARM\Inc\ST\STM32F4xx --predefine="
+__RTX SETA 1" --predefine="__UVISION_VERSION SETA 522" --list=.\lst\svc_table.l
+st bsp\SVC_Table.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+SVC_Count 00000000
+
+Symbol: SVC_Count
+   Definitions
+      At line 18 in file bsp\SVC_Table.s
+   Uses
+      At line 15 in file bsp\SVC_Table.s
+Comment: SVC_Count used once
+SVC_End 00000008
+
+Symbol: SVC_End
+   Definitions
+      At line 28 in file bsp\SVC_Table.s
+   Uses
+      At line 17 in file bsp\SVC_Table.s
+Comment: SVC_End used once
+SVC_TABLE 00000000
+
+Symbol: SVC_TABLE
+   Definitions
+      At line 13 in file bsp\SVC_Table.s
+   Uses
+      None
+Comment: SVC_TABLE unused
+SVC_Table 00000004
+
+Symbol: SVC_Table
+   Definitions
+      At line 24 in file bsp\SVC_Table.s
+   Uses
+      At line 17 in file bsp\SVC_Table.s
+      At line 23 in file bsp\SVC_Table.s
+
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+SVC_Cnt 00000001
+
+Symbol: SVC_Cnt
+   Definitions
+      At line 17 in file bsp\SVC_Table.s
+   Uses
+      At line 18 in file bsp\SVC_Table.s
+Comment: SVC_Cnt used once
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+__SVC_1 00000000
+
+Symbol: __SVC_1
+   Definitions
+      At line 21 in file bsp\SVC_Table.s
+   Uses
+      At line 26 in file bsp\SVC_Table.s
+Comment: __SVC_1 used once
+1 symbol
+338 symbols in table
