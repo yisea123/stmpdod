@@ -8,6 +8,7 @@
 
 CONFIG config;
 
+
 static void Config_Default()
 {
 	config.threshold = 1000;//峰峰值的阈值
@@ -18,7 +19,7 @@ static void Config_Default()
 	SaveConfig2Flash();
 }
 
-void Config_Init()
+void Config_Init()//得到写入flash得配置信息
 {
 	uint16_t crc;
 	uint16_t* pData = (uint16_t*)&config ;

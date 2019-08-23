@@ -25,7 +25,7 @@ extern uint8_t Load$$LR$$LR_IROM1$$Length[];
 #define ADDR_FLASH_SECTOR_9     ((u32)0x080A0000)
 #define ADDR_FLASH_SECTOR_10    ((u32)0x080C0000)
 #define ADDR_FLASH_SECTOR_11    ((u32)0x080E0000)
-
+//–¥»ÎflashŒª÷√¬ﬂº≠°£
 uint16_t  Addr2Sector(uint32_t addr)
 {
 	if (addr < ADDR_FLASH_SECTOR_1) {
@@ -76,7 +76,7 @@ void EraseBinArea(uint32_t size)
 	FLASH_Lock();
 
 }
-__declspec(noreturn) void __SVC_1(void)
+__declspec(noreturn) void __SVC_1(void)//¥Ê“…£ø
 {
 	typedef void (*UPDATE_START)(void);
 	UPDATE_START addr = (UPDATE_START)((*(uint32_t*)(FLASH_ADDR_40000 + 13 * 4)) - (uint32_t)Load$$LR$$LR_IROM1$$Base + FLASH_ADDR_40000);

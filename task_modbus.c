@@ -25,15 +25,15 @@ static void ModbusSendFrame(MODBUSFRAME* pFrame)
 
 __task void ModbusProc(void)
 {
-	MODBUSFRAME* pFrame;
-	os_mbx_init(&mailbox_frame, sizeof(mailbox_frame));
-	while (os_mbx_wait(&mailbox_frame, (void**)&pFrame, 0xFFFF) == OS_R_MBX) {
+	MODBUSFRAME* pFrame;//modbus rtu通信协议
+	os_mbx_init(&mailbox_frame, sizeof(mailbox_frame));//一开始阻塞
+	while (os_mbx_wait(&mailbox_frame, (void**)&pFrame, 0xFFFF) == OS_R_MBX) { //收到发送了的数据
 		wd_modbus = 20;
-		if (pFrame->header.slaveaddr == config.slaveaddr) {
-			if (ModbusMasterCheckCRC(pFrame)) {
+		if (pFrame->header.slaveaddr == config.slaveaddr) {//从机
+			if (ModbusMasterCheckCRC(pFrame)) {//crc校验
 				uint16_t addrbegin = MAKEWORD(pFrame->master16.addrlo, pFrame->master16.addrhi);
 				uint16_t addrend = addrbegin + MAKEWORD(pFrame->master16.numlo, pFrame->master16.numhi);
-				switch (pFrame->header.func) {
+				switch (pFrame->header.func) {//根据func选择一个功能。
 					case 3:
 						if (addrend <= 64 || addrbegin >= 2048) {
 							if (addrbegin >= 3072 && addrend <= (3072 + 125) && queue_empty(&m_queue)) { //当峰值寄存器没有更新的时候，不返回数据
@@ -41,11 +41,11 @@ __task void ModbusProc(void)
 							} else if (addrbegin >= 3072 && addrend <= (3072 + 125) && !queue_empty(&m_queue)) {
 								item_t ppvalue;
 								queue_dequeue(&m_queue, &ppvalue);
-								memcpy(&modbusreg_3, &ppvalue, sizeof(modbusreg_3));
+								memcpy(&modbusreg_3, &ppvalue, sizeof(modbusreg_3)); //取出发送的数据
 							}
-							ModbusReadRegs(pFrame);
+							ModbusReadRegs(pFrame);//处理 填充ppvalue
 							os_dly_wait(1);
-							ModbusSendFrame(pFrame);
+							ModbusSendFrame(pFrame);//发送
 						}
 						break;
 					case 16:
@@ -53,18 +53,18 @@ __task void ModbusProc(void)
 						{
 							if (IsEraseCMD(addrbegin, addrend)) {
 								wd_modbus = 50;
-								EraseBinArea(MAKELONG(modbusreg_1.addr[0], modbusreg_1.addr[1]));
+								EraseBinArea(MAKELONG(modbusreg_1.addr[0], modbusreg_1.addr[1]));//擦除
 							}
-							if (IsUpdateBinData(addrbegin, addrend)) {
+							if (IsUpdateBinData(addrbegin, addrend)) {//
 								BINDATA bin;
-								GetModbusBinData(&bin);
-								UpdateBinData(&bin);
+								GetModbusBinData(&bin);//填充数据
+								UpdateBinData(&bin);//写入flash
 							}
 							if (IsUpdateCMD(addrbegin, addrend)) {
 								LoadUpdate();
 							}
 							if (IsRebootCMD(addrbegin, addrend)) {
-								Reboot();
+								Reboot();//复位
 							}
 							if (IsConfigWritten(addrbegin, addrend)) {
 								memcpy(&config, &modbusreg_2, sizeof(modbusreg_2));
@@ -72,7 +72,7 @@ __task void ModbusProc(void)
 								Reboot();
 							}
 						}
-						ModbusSendFrame(pFrame);
+						ModbusSendFrame(pFrame);//发送
 						break;
 				}
 			}
@@ -90,7 +90,7 @@ void CreateTaskModbus(void)
 
 void ISR_UARTRS485_0(uint8_t* ptr)
 {
-	isr_mbx_send(&mailbox_frame, ptr);
+	isr_mbx_send(&mailbox_frame, ptr);//可以唤醒上面线程。在串口源文件中调用该函数。
 }
 
 void StopTaskModbus(void)

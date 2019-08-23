@@ -6,8 +6,9 @@
 #include "rtl.h"
 #include "ADC.h"
 
-#pragma pack(1)
+#pragma pack(1) //结构体对齐 一字节对齐，节省空间，如果定义四字节，或者八字节对齐。
 
+//上面设置对齐为一个字节，所以就是char 数组该结构体
 typedef union {
 	struct {
 		u8 slaveaddr;

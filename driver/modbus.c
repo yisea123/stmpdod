@@ -13,6 +13,7 @@ static uint16_t* const _modbusreg_2 = (uint16_t*)& modbusreg_2;
 static uint16_t* const _modbusreg_3 = (uint16_t*)& modbusreg_3;
 
 MODBUSFRAME frame;
+//传输协议 modbus
 
 static uint16_t* AccessAddr(uint16_t addr)
 {
@@ -141,7 +142,7 @@ void ModbusWriteRegs(MODBUSFRAME* pFrame)
 static void ModbusSetSoftVersion(void)
 {
 	int i;
-
+//软件版本
 	for (i = 0; i < 32; i++) {
 		modbusreg_0.soft_mode[i] = 0;
 	}
@@ -164,7 +165,7 @@ static void ModbusSetSoftVersion(void)
 
 void ModbusInit(void)
 {
-	ModbusSetSoftVersion();
+	ModbusSetSoftVersion();//初始化
 }
 
 uint8_t IsReadPeakVale(uint16_t addrbegin, uint16_t addrend)
@@ -241,7 +242,7 @@ __asm void ModbusI322Reg(uint16_t* pReg, int32_t nValue)
 
 __asm void ModbusFloat2Reg(uint16_t* pReg, float fValue)
 {
-	STRH     r1, [r0, #0x02]
+	STRH     r1, [r0, #0x02] 
 	ASR      r1, r1, #16
 	STRH     r1, [r0, #0x00]
 	BX       lr

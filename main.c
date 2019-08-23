@@ -11,7 +11,7 @@
 #include "driver/ADC.h"
 #include <stdlib.h>
 
-static U64 stk[600 / 8];
+static U64 stk[600 / 8];//栈大小
 
 static __task void init(void)
 {
@@ -20,7 +20,7 @@ static __task void init(void)
 	ModbusInit();
 	CreateTaskModbus();
 	CreatTaskTime();
-	InitADC();
+	InitADC();//开始模数转换，采集到的样本自动传入内存中Apoint数组，触发处理。
 	os_tsk_prio_self(PRIORITY_MEDIUM);
 	while (1) {
 		os_tsk_pass();
@@ -29,7 +29,7 @@ static __task void init(void)
 
 int main(void)
 {
-	RCC_Configuration();
+	RCC_Configuration(); // 配置
 	GPIO_Configuration();
 	NVIC_Configuration();
 	os_sys_init_user(init, PRIORITY_MEDIUM, stk, sizeof(stk));

@@ -11,7 +11,7 @@ static void TIM3_Init()
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-	TIM_TimeBaseInitStructure.TIM_Period = 5000 - 1; 	//500ms
+	TIM_TimeBaseInitStructure.TIM_Period = 5000 - 1; 	//500ms 定时500ms
 	TIM_TimeBaseInitStructure.TIM_Prescaler = 8400 - 1;
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -27,10 +27,10 @@ void TimeProc(void)
 	static item_t ppvalue;
 	TIM3_Init();
 	queue_init(&m_queue);
-	BeginRefresh((uint16_t*)&ppvalue);
-	while (1) {
-		WaitRefresh();
-		queue_enqueue(&m_queue, &ppvalue);
+	BeginRefresh((uint16_t*)&ppvalue); 
+	while (1) { //用于填充
+		WaitRefresh();//等待信号量大于0，否则会阻塞。
+		queue_enqueue(&m_queue, &ppvalue);//加入队列
 	}
 }
 
@@ -41,7 +41,7 @@ void CreatTaskTime()
 
 void TIM3_IRQHandler(void)
 {
-	if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) {
+	if (TIM_GetITStatus(TIM3, TIM_IT_Update) == SET) { 
 		WDI_Reverse();
 		HeartLED_Reverse();
 	}
