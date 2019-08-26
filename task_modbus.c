@@ -34,7 +34,7 @@ __task void ModbusProc(void)
 				uint16_t addrbegin = MAKEWORD(pFrame->master16.addrlo, pFrame->master16.addrhi);
 				uint16_t addrend = addrbegin + MAKEWORD(pFrame->master16.numlo, pFrame->master16.numhi);
 				switch (pFrame->header.func) {//根据func选择一个功能。
-					case 3:
+					case 3://这里就是发送数据给上位机，就是超时波数据发送
 						if (addrend <= 64 || addrbegin >= 2048) {
 							if (addrbegin >= 3072 && addrend <= (3072 + 125) && queue_empty(&m_queue)) { //当峰值寄存器没有更新的时候，不返回数据
 								continue;
@@ -44,11 +44,11 @@ __task void ModbusProc(void)
 								memcpy(&modbusreg_3, &ppvalue, sizeof(modbusreg_3)); //取出发送的数据
 							}
 							ModbusReadRegs(pFrame);//处理 填充ppvalue
-							os_dly_wait(1);
+							os_dly_wait(1);//等待数据填充完毕
 							ModbusSendFrame(pFrame);//发送
 						}
 						break;
-					case 16:
+					case 16://得到数据写入寄存器，升级stm32代码用
 						ModbusWriteRegs(pFrame);
 						{
 							if (IsEraseCMD(addrbegin, addrend)) {

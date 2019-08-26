@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\obj\PDOD-01.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\obj\PDOD-01.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Aug 23 15:02:48 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Aug 23 17:11:08 2019
 <BR><P>
 <H3>Maximum Stack Usage =        328 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -323,8 +323,8 @@ Global Symbols
 <P><STRONG><a name="[b]"></a>PendSV_Handler</STRONG> (Thumb, 112 bytes, Stack size 0 bytes, hal_cm4.o(.emb_text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = PendSV_Handler &rArr; rt_pop_req &rArr; rt_mbx_psh &rArr; os_error &rArr; Reboot &rArr; WWDG_SetWindowValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_stk_check
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
@@ -892,14 +892,14 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
 <P><STRONG><a name="[ed]"></a>ModbusMasterFrameLength</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, modbus.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeMasterCRC
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMasterCheckCRC
+<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMasterCheckCRC
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeMasterCRC
 </UL>
 
 <P><STRONG><a name="[a5]"></a>ModbusSlaveFrameLength</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, modbus.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveCheckCRC
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeCRC
+<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeCRC
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSendFrame
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveCheckCRC
 </UL>
 
 <P><STRONG><a name="[ec]"></a>ModbusMakeMasterCRC</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, modbus.o(.text), UNUSED)
@@ -917,8 +917,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ee]"></a>ModbusSlaveCheckCRC</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, modbus.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveFrameLength
+<BR><BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveFrameLength
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
 </UL>
 
 <P><STRONG><a name="[ac]"></a>ModbusReadRegs</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, modbus.o(.text))
@@ -977,12 +977,12 @@ Global Symbols
 <P><STRONG><a name="[eb]"></a>CRC16</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, crc16.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = CRC16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveCheckCRC
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeMasterCRC
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeCRC
+<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeCRC
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SaveConfig2Flash
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMasterCheckCRC
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_Init
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveCheckCRC
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusMakeMasterCRC
 </UL>
 
 <P><STRONG><a name="[170]"></a>CRC16_Push</STRONG> (Thumb, 48 bytes, Stack size 20 bytes, crc16.o(.text), UNUSED)
@@ -990,16 +990,16 @@ Global Symbols
 <P><STRONG><a name="[b6]"></a>SaveConfig2Flash</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = SaveConfig2Flash &rArr; FLASH_EraseSector &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
+<BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Lock
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_EraseSector
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ClearFlag
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Addr2Sector
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_Default
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusProc
+<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusProc
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_Default
 </UL>
 
 <P><STRONG><a name="[94]"></a>Config_Init</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, config.o(.text))
@@ -2081,12 +2081,12 @@ Global Symbols
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_wait
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_prio
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mut_release
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_sem_psh
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_mbx_psh
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 </UL>
 
 <P><STRONG><a name="[13f]"></a>rt_get_same_rdy_prio</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rt_list.o(i.rt_get_same_rdy_prio))
@@ -2199,9 +2199,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[12e]"></a>rt_put_rdy_first</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, rt_list.o(i.rt_put_rdy_first))
-<BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
+<BR><BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 </UL>
 
 <P><STRONG><a name="[134]"></a>rt_resort_prio</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, rt_list.o(i.rt_resort_prio))
@@ -2265,10 +2265,10 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dbg_task_switch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_tsk_pass
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_dispatch
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_block
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_systick
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_pop_req
 </UL>
 
 <P><STRONG><a name="[68]"></a>rt_sys_init</STRONG> (Thumb, 268 bytes, Stack size 32 bytes, rt_task.o(i.rt_sys_init))
@@ -2461,8 +2461,8 @@ Local Symbols
 <P><STRONG><a name="[ea]"></a>ModbusMakeCRC</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, modbus.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ModbusMakeCRC &rArr; CRC16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveFrameLength
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusSlaveFrameLength
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusWriteRegs
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ModbusReadRegs

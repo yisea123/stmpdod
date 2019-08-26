@@ -65,7 +65,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
 F (.\bsp\startup_stm32f40_41xxx.s)(0x5D5A52A5)(--cpu Cortex-M4.fp --pd "__RTX SETA 1" -g --apcs=interwork -IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx--pd "__UVISION_VERSION SETA 522"--list .\lst\startup_stm32f40_41xxx.lst --xref -o .\obj\startup_stm32f40_41xxx.o --depend .\obj\startup_stm32f40_41xxx.d)
 F (.\bsp\SVC_Table.s)(0x5D5A52A5)(--cpu Cortex-M4.fp --pd "__RTX SETA 1" -g --apcs=interwork -IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx--pd "__UVISION_VERSION SETA 522"--list .\lst\svc_table.lst --xref -o .\obj\svc_table.o --depend .\obj\svc_table.d)
-F (.\main.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\main.c)(0x5D5FAD0F)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -91,14 +91,14 @@ I (main.h)(0x5D5A52A5)
 I (driver/rcc.h)(0x5D5A52A5)
 I (driver/gpio.h)(0x5D5A52A5)
 I (driver/nvic.h)(0x5D5A52A5)
-I (driver/modbus.h)(0x5D5A52A5)
+I (driver/modbus.h)(0x5D5FAD11)
 I (driver/update.h)(0x5D5A52A5)
 I (driver/ADC.h)(0x5D5A52A5)
 I (driver/uart1.h)(0x5D5A52A5)
 I (task_modbus.h)(0x5D5A52A5)
 I (task_time.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
-F (.\task_modbus.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\task_modbus.o --omf_browse .\obj\task_modbus.crf --depend .\obj\task_modbus.d)
+F (.\task_modbus.c)(0x5D5FAD0E)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\task_modbus.o --omf_browse .\obj\task_modbus.crf --depend .\obj\task_modbus.d)
 I (std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -123,7 +123,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
 I (main.h)(0x5D5A52A5)
 I (task_modbus.h)(0x5D5A52A5)
 I (driver/uart1.h)(0x5D5A52A5)
-I (driver/modbus.h)(0x5D5A52A5)
+I (driver/modbus.h)(0x5D5FAD11)
 I (driver/update.h)(0x5D5A52A5)
 I (driver/ADC.h)(0x5D5A52A5)
 I (driver/crc16.h)(0x5D5A52A5)
@@ -180,7 +180,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
-F (.\driver\uart1.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\uart1.o --omf_browse .\obj\uart1.crf --depend .\obj\uart1.d)
+F (.\driver\uart1.c)(0x5D5FAD0F)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\uart1.o --omf_browse .\obj\uart1.crf --depend .\obj\uart1.d)
 I (.\std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -208,10 +208,10 @@ I (driver\gpio.h)(0x5D5A52A5)
 I (driver\ADC.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
 I (.\task_modbus.h)(0x5D5A52A5)
-I (driver\modbus.h)(0x5D5A52A5)
+I (driver\modbus.h)(0x5D5FAD11)
 I (driver\update.h)(0x5D5A52A5)
 I (driver\config.h)(0x5D5A52A5)
-F (.\driver\ADC.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\adc.o --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
+F (.\driver\ADC.c)(0x5D5FAD0D)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\adc.o --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
 I (.\std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -241,7 +241,7 @@ I (driver\crc16.h)(0x5D5A52A5)
 I (.\main.h)(0x5D5A52A5)
 I (driver\../task_modbus.h)(0x5D5A52A5)
 I (driver\config.h)(0x5D5A52A5)
-F (.\driver\update.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\update.o --omf_browse .\obj\update.crf --depend .\obj\update.d)
+F (.\driver\update.c)(0x5D5FAD10)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\update.o --omf_browse .\obj\update.crf --depend .\obj\update.d)
 I (.\std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -266,7 +266,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
 I (driver\update.h)(0x5D5A52A5)
 I (driver\flash_if.h)(0x5D5A52A5)
 I (driver\gpio.h)(0x5D5A52A5)
-F (.\driver\modbus.c)(0x5D5F8F93)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\modbus.o --omf_browse .\obj\modbus.crf --depend .\obj\modbus.d)
+F (.\driver\modbus.c)(0x5D5FAD10)(-c --cpu Cortex-M4.fp -D__RTX -g -O0 --apcs=interwork -I .\STM32F4xx_StdPeriph_Driver\inc -I .\bsp -I .\driver -I ..\PDOD -I .\-IE:\Keil_v5\ARM\RV31\INC-IE:\Keil_v5\ARM\CMSIS\Include-IE:\Keil_v5\ARM\Inc\ST\STM32F4xx-D__UVISION_VERSION="522" -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DHSE_VALUE="16000000"-o .\obj\modbus.o --omf_browse .\obj\modbus.crf --depend .\obj\modbus.d)
 I (.\std.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\RTL.h)(0x559CE078)
 I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F606B8)
@@ -289,7 +289,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
 I (.\main.h)(0x5D5A52A5)
-I (driver\modbus.h)(0x5D5A52A5)
+I (driver\modbus.h)(0x5D5FAD11)
 I (driver\update.h)(0x5D5A52A5)
 I (driver\ADC.h)(0x5D5A52A5)
 I (driver\crc16.h)(0x5D5A52A5)
@@ -335,7 +335,7 @@ I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5D5A52A5)
 I (.\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5D5A52A5)
-I (driver\modbus.h)(0x5D5A52A5)
+I (driver\modbus.h)(0x5D5FAD11)
 I (driver\update.h)(0x5D5A52A5)
 I (E:\Keil_v5\ARM\RV31\INC\rtl.h)(0x559CE078)
 I (driver\ADC.h)(0x5D5A52A5)

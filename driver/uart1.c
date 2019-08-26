@@ -12,6 +12,7 @@ static unsigned int buflen_rs485_0;
 static unsigned char* send_rs485_0;
 static unsigned int sendlen_rs485_0;
 
+//每次发送接收都是八个字节的数据
 void UART1_Init(void)
 {
 	int baudrate = ModbusReg2Int(config.baudrate);

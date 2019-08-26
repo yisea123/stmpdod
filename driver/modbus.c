@@ -13,9 +13,9 @@ static uint16_t* const _modbusreg_2 = (uint16_t*)& modbusreg_2;
 static uint16_t* const _modbusreg_3 = (uint16_t*)& modbusreg_3;
 
 MODBUSFRAME frame;
-//传输协议 modbus
+//传输协议 modbus -rtu实现
 
-static uint16_t* AccessAddr(uint16_t addr)
+static uint16_t* AccessAddr(uint16_t addr) //主机要读取从机的地址，验证地址
 {
 	if (addr >= 1024 && addr < 1146) {
 		return _modbusreg_1 + addr - 1024;
@@ -63,7 +63,8 @@ static void ModbusMakeCRC(MODBUSFRAME* pFrame)
 	((u8*)pFrame)[len - 2] = crc >> 8;
 	((u8*)pFrame)[len - 1] = crc;
 }
-void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)
+
+void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)//主机算crc校验
 {
 	uint16_t len = ModbusMasterFrameLength(pFrame);
 	uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);
@@ -75,8 +76,8 @@ uint8_t ModbusMasterCheckCRC(MODBUSFRAME* pFrame)
 {
 	uint16_t len = ModbusMasterFrameLength(pFrame);
 	if (len > 2) {
-		uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);
-		return crc == MAKEWORD(((u8*)pFrame)[len - 1], ((u8*)pFrame)[len - 2]);
+		uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);//在算一遍
+		return crc == MAKEWORD(((u8*)pFrame)[len - 1], ((u8*)pFrame)[len - 2]);//与之前传输前算的是否一致
 	} else {
 		return 0;
 	}
@@ -92,8 +93,8 @@ uint8_t ModbusSlaveCheckCRC(MODBUSFRAME* pFrame)
 		return 0;
 	}
 }
-
-void ModbusReadRegs(MODBUSFRAME* pFrame)
+//-------------------------
+void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
 {
 	uint16_t addrbegin, addrend;
 	int dataidx = 0;
@@ -120,7 +121,7 @@ void ModbusReadRegs(MODBUSFRAME* pFrame)
 	ModbusMakeCRC(pFrame);
 }
 
-void ModbusWriteRegs(MODBUSFRAME* pFrame)
+void ModbusWriteRegs(MODBUSFRAME* pFrame)//寄存器的数据（从机）
 {
 	uint16_t addrbegin, addrend;
 	int dataidx = 0;
@@ -129,16 +130,16 @@ void ModbusWriteRegs(MODBUSFRAME* pFrame)
 	addrend = addrbegin + MAKEWORD(pFrame->master16.numlo, pFrame->master16.numhi);
 
 	while (addrbegin < addrend) {
-		uint16_t* reg = AccessAddr(addrbegin);
+		uint16_t* reg = AccessAddr(addrbegin);//写到内存中某些地方。
 		if (reg != 0) {
 			*reg = MAKEWORD(pFrame->master16.data[dataidx + 1], pFrame->master16.data[dataidx]);
 		}
-		addrbegin++;
+		addrbegin++;//以字节增加
 		dataidx += 2;
 	}
 	ModbusMakeCRC(pFrame);
 }
-
+//-------------------------------------
 static void ModbusSetSoftVersion(void)
 {
 	int i;

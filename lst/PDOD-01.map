@@ -1556,153 +1556,153 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x00000188   Data   RO          174    RESET               startup_stm32f40_41xxx.o
-    0x08000188   0x00000008   Code   RO         1344  * !!!main             c_w.l(__main.o)
-    0x08000190   0x00000034   Code   RO         1504    !!!scatter          c_w.l(__scatter.o)
-    0x080001c4   0x0000005a   Code   RO         1502    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x08000188   0x00000008   Code   RO         1409  * !!!main             c_w.l(__main.o)
+    0x08000190   0x00000034   Code   RO         1569    !!!scatter          c_w.l(__scatter.o)
+    0x080001c4   0x0000005a   Code   RO         1567    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x0800021e   0x00000002   PAD
-    0x08000220   0x0000001c   Code   RO         1506    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x0800023c   0x00000002   Code   RO         1375    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x0800023e   0x00000004   Code   RO         1378    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1381    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1384    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1386    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1388    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1391    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1393    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1395    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1397    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1399    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1401    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1403    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1405    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1407    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1409    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1411    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1415    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1417    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1419    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x08000242   0x00000000   Code   RO         1421    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x08000242   0x00000002   Code   RO         1422    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x08000244   0x00000002   Code   RO         1442    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x08000246   0x00000000   Code   RO         1455    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x08000246   0x00000000   Code   RO         1457    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x08000246   0x00000000   Code   RO         1460    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x08000246   0x00000000   Code   RO         1463    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x08000246   0x00000000   Code   RO         1465    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x08000246   0x00000000   Code   RO         1468    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x08000246   0x00000002   Code   RO         1469    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x08000248   0x00000000   Code   RO         1346    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x08000248   0x00000000   Code   RO         1352    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x08000248   0x00000006   Code   RO         1364    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x0800024e   0x00000000   Code   RO         1354    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x0800024e   0x00000004   Code   RO         1355    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x08000252   0x00000000   Code   RO         1357    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x08000252   0x00000008   Code   RO         1358    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0800025a   0x00000002   Code   RO         1376    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0800025c   0x00000000   Code   RO         1424    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0800025c   0x00000004   Code   RO         1425    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x08000260   0x00000006   Code   RO         1426    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000220   0x0000001c   Code   RO         1571    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x0800023c   0x00000002   Code   RO         1440    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x0800023e   0x00000004   Code   RO         1443    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1446    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1449    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1451    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1453    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1456    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1458    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1460    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1462    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1464    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1466    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1468    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1470    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1472    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1474    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1476    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1480    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1482    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1484    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x08000242   0x00000000   Code   RO         1486    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x08000242   0x00000002   Code   RO         1487    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x08000244   0x00000002   Code   RO         1507    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x08000246   0x00000000   Code   RO         1520    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x08000246   0x00000000   Code   RO         1522    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x08000246   0x00000000   Code   RO         1525    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x08000246   0x00000000   Code   RO         1528    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x08000246   0x00000000   Code   RO         1530    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x08000246   0x00000000   Code   RO         1533    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x08000246   0x00000002   Code   RO         1534    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x08000248   0x00000000   Code   RO         1411    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x08000248   0x00000000   Code   RO         1417    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x08000248   0x00000006   Code   RO         1429    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x0800024e   0x00000000   Code   RO         1419    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0800024e   0x00000004   Code   RO         1420    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x08000252   0x00000000   Code   RO         1422    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x08000252   0x00000008   Code   RO         1423    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0800025a   0x00000002   Code   RO         1441    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0800025c   0x00000000   Code   RO         1489    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0800025c   0x00000004   Code   RO         1490    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x08000260   0x00000006   Code   RO         1491    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x08000266   0x00000002   PAD
-    0x08000268   0x00000076   Code   RO          436    .emb_text           modbus.o
+    0x08000268   0x00000076   Code   RO          501    .emb_text           modbus.o
     0x080002de   0x00000002   PAD
-    0x080002e0   0x000001b4   Code   RO         1008    .emb_text           RTX_CM4.LIB(hal_cm4.o)
+    0x080002e0   0x000001b4   Code   RO         1073    .emb_text           RTX_CM4.LIB(hal_cm4.o)
     0x08000494   0x00000098   Code   RO            3    .text               rtx_conf_cm.o
     0x0800052c   0x00000010   Code   RO          101    .text               stm32f4xx_it.o
     0x0800053c   0x0000020c   Code   RO          147    .text               system_stm32f4xx.o
     0x08000748   0x00000040   Code   RO          175    .text               startup_stm32f40_41xxx.o
     0x08000788   0x00000254   Code   RO          184    .text               main.o
-    0x080009dc   0x000001f4   Code   RO          245    .text               task_modbus.o
-    0x08000bd0   0x00000128   Code   RO          283    .text               task_time.o
-    0x08000cf8   0x00000036   Code   RO          311    .text               std.o
+    0x080009dc   0x000001f4   Code   RO          292    .text               task_modbus.o
+    0x08000bd0   0x00000128   Code   RO          330    .text               task_time.o
+    0x08000cf8   0x00000036   Code   RO          372    .text               std.o
     0x08000d2e   0x00000002   PAD
-    0x08000d30   0x00000224   Code   RO          331    .text               uart1.o
-    0x08000f54   0x00000264   Code   RO          381    .text               adc.o
-    0x080011b8   0x00000218   Code   RO          412    .text               update.o
-    0x080013d0   0x000003ac   Code   RO          437    .text               modbus.o
-    0x0800177c   0x00000068   Code   RO          469    .text               crc16.o
-    0x080017e4   0x000000d0   Code   RO          491    .text               config.o
-    0x080018b4   0x000000b4   Code   RO          534    .text               queue.o
-    0x08001968   0x000000e0   Code   RO          560    .text               misc.o
-    0x08001a48   0x00000464   Code   RO          580    .text               stm32f4xx_adc.o
-    0x08001eac   0x00000694   Code   RO          620    .text               stm32f4xx_flash.o
-    0x08002540   0x00000294   Code   RO          640    .text               stm32f4xx_gpio.o
-    0x080027d4   0x00000658   Code   RO          660    .text               stm32f4xx_rcc.o
-    0x08002e2c   0x00000ca2   Code   RO          682    .text               stm32f4xx_tim.o
+    0x08000d30   0x00000224   Code   RO          392    .text               uart1.o
+    0x08000f54   0x00000264   Code   RO          446    .text               adc.o
+    0x080011b8   0x00000218   Code   RO          477    .text               update.o
+    0x080013d0   0x000003ac   Code   RO          502    .text               modbus.o
+    0x0800177c   0x00000068   Code   RO          534    .text               crc16.o
+    0x080017e4   0x000000d0   Code   RO          556    .text               config.o
+    0x080018b4   0x000000b4   Code   RO          599    .text               queue.o
+    0x08001968   0x000000e0   Code   RO          625    .text               misc.o
+    0x08001a48   0x00000464   Code   RO          645    .text               stm32f4xx_adc.o
+    0x08001eac   0x00000694   Code   RO          685    .text               stm32f4xx_flash.o
+    0x08002540   0x00000294   Code   RO          705    .text               stm32f4xx_gpio.o
+    0x080027d4   0x00000658   Code   RO          725    .text               stm32f4xx_rcc.o
+    0x08002e2c   0x00000ca2   Code   RO          747    .text               stm32f4xx_tim.o
     0x08003ace   0x00000002   PAD
-    0x08003ad0   0x00000454   Code   RO          702    .text               stm32f4xx_usart.o
-    0x08003f24   0x00000090   Code   RO          722    .text               stm32f4xx_wwdg.o
-    0x08003fb4   0x000003a8   Code   RO          742    .text               stm32f4xx_dma.o
-    0x0800435c   0x00000008   Code   RO         1335    .text               c_w.l(libspace.o)
-    0x08004364   0x0000008a   Code   RO         1338    .text               c_w.l(rt_memcpy_v6.o)
-    0x080043ee   0x00000044   Code   RO         1340    .text               c_w.l(rt_memclr.o)
-    0x08004432   0x00000006   Code   RO         1342    .text               c_w.l(heapauxi.o)
-    0x08004438   0x00000064   Code   RO         1347    .text               c_w.l(rt_memcpy_w.o)
-    0x0800449c   0x0000004e   Code   RO         1349    .text               c_w.l(rt_memclr_w.o)
-    0x080044ea   0x0000004a   Code   RO         1366    .text               c_w.l(sys_stackheap_outer.o)
-    0x08004534   0x00000012   Code   RO         1368    .text               c_w.l(exit.o)
+    0x08003ad0   0x00000454   Code   RO          767    .text               stm32f4xx_usart.o
+    0x08003f24   0x00000090   Code   RO          787    .text               stm32f4xx_wwdg.o
+    0x08003fb4   0x000003a8   Code   RO          807    .text               stm32f4xx_dma.o
+    0x0800435c   0x00000008   Code   RO         1400    .text               c_w.l(libspace.o)
+    0x08004364   0x0000008a   Code   RO         1403    .text               c_w.l(rt_memcpy_v6.o)
+    0x080043ee   0x00000044   Code   RO         1405    .text               c_w.l(rt_memclr.o)
+    0x08004432   0x00000006   Code   RO         1407    .text               c_w.l(heapauxi.o)
+    0x08004438   0x00000064   Code   RO         1412    .text               c_w.l(rt_memcpy_w.o)
+    0x0800449c   0x0000004e   Code   RO         1414    .text               c_w.l(rt_memclr_w.o)
+    0x080044ea   0x0000004a   Code   RO         1431    .text               c_w.l(sys_stackheap_outer.o)
+    0x08004534   0x00000012   Code   RO         1433    .text               c_w.l(exit.o)
     0x08004546   0x00000002   PAD
-    0x08004548   0x0000000c   Code   RO         1434    .text               c_w.l(sys_exit.o)
-    0x08004554   0x00000002   Code   RO         1445    .text               c_w.l(use_no_semi.o)
-    0x08004556   0x00000000   Code   RO         1447    .text               c_w.l(indicate_semi.o)
+    0x08004548   0x0000000c   Code   RO         1499    .text               c_w.l(sys_exit.o)
+    0x08004554   0x00000002   Code   RO         1510    .text               c_w.l(use_no_semi.o)
+    0x08004556   0x00000000   Code   RO         1512    .text               c_w.l(indicate_semi.o)
     0x08004556   0x00000002   PAD
     0x08004558   0x00000008   Code   RO          179    SVC_TABLE           svc_table.o
-    0x08004560   0x00000046   Code   RO         1214    i._init_box         RTX_CM4.LIB(rt_membox.o)
+    0x08004560   0x00000046   Code   RO         1279    i._init_box         RTX_CM4.LIB(rt_membox.o)
     0x080045a6   0x00000002   PAD
-    0x080045a8   0x00000030   Code   RO         1009    i.dbg_init          RTX_CM4.LIB(hal_cm4.o)
-    0x080045d8   0x00000020   Code   RO         1010    i.dbg_task_notify   RTX_CM4.LIB(hal_cm4.o)
-    0x080045f8   0x00000010   Code   RO         1011    i.dbg_task_switch   RTX_CM4.LIB(hal_cm4.o)
-    0x08004608   0x0000000e   Code   RO          860    i.isr_mbx_send      RTX_CM4.LIB(rt_mailbox.o)
-    0x08004616   0x00000010   Code   RO          915    i.isr_sem_send      RTX_CM4.LIB(rt_semaphore.o)
+    0x080045a8   0x00000030   Code   RO         1074    i.dbg_init          RTX_CM4.LIB(hal_cm4.o)
+    0x080045d8   0x00000020   Code   RO         1075    i.dbg_task_notify   RTX_CM4.LIB(hal_cm4.o)
+    0x080045f8   0x00000010   Code   RO         1076    i.dbg_task_switch   RTX_CM4.LIB(hal_cm4.o)
+    0x08004608   0x0000000e   Code   RO          925    i.isr_mbx_send      RTX_CM4.LIB(rt_mailbox.o)
+    0x08004616   0x00000010   Code   RO          980    i.isr_sem_send      RTX_CM4.LIB(rt_semaphore.o)
     0x08004626   0x00000002   PAD
-    0x08004628   0x00000028   Code   RO         1050    i.os_tick_init      RTX_CM4.LIB(rt_system.o)
-    0x08004650   0x00000002   Code   RO         1051    i.os_tick_irqack    RTX_CM4.LIB(rt_system.o)
-    0x08004652   0x0000001a   Code   RO         1215    i.rt_alloc_box      RTX_CM4.LIB(rt_membox.o)
-    0x0800466c   0x00000038   Code   RO          760    i.rt_block          RTX_CM4.LIB(rt_task.o)
-    0x080046a4   0x00000074   Code   RO         1134    i.rt_dec_dly        RTX_CM4.LIB(rt_list.o)
-    0x08004718   0x00000044   Code   RO          761    i.rt_dispatch       RTX_CM4.LIB(rt_task.o)
-    0x0800475c   0x00000006   Code   RO          951    i.rt_dly_wait       RTX_CM4.LIB(rt_time.o)
+    0x08004628   0x00000028   Code   RO         1115    i.os_tick_init      RTX_CM4.LIB(rt_system.o)
+    0x08004650   0x00000002   Code   RO         1116    i.os_tick_irqack    RTX_CM4.LIB(rt_system.o)
+    0x08004652   0x0000001a   Code   RO         1280    i.rt_alloc_box      RTX_CM4.LIB(rt_membox.o)
+    0x0800466c   0x00000038   Code   RO          825    i.rt_block          RTX_CM4.LIB(rt_task.o)
+    0x080046a4   0x00000074   Code   RO         1199    i.rt_dec_dly        RTX_CM4.LIB(rt_list.o)
+    0x08004718   0x00000044   Code   RO          826    i.rt_dispatch       RTX_CM4.LIB(rt_task.o)
+    0x0800475c   0x00000006   Code   RO         1016    i.rt_dly_wait       RTX_CM4.LIB(rt_time.o)
     0x08004762   0x00000002   PAD
-    0x08004764   0x0000004c   Code   RO         1246    i.rt_evt_psh        RTX_CM4.LIB(rt_event.o)
-    0x080047b0   0x00000020   Code   RO         1216    i.rt_free_box       RTX_CM4.LIB(rt_membox.o)
-    0x080047d0   0x00000028   Code   RO         1135    i.rt_get_first      RTX_CM4.LIB(rt_list.o)
-    0x080047f8   0x00000024   Code   RO         1136    i.rt_get_same_rdy_prio  RTX_CM4.LIB(rt_list.o)
-    0x0800481c   0x0000004c   Code   RO          762    i.rt_init_context   RTX_CM4.LIB(rt_task.o)
-    0x08004868   0x00000050   Code   RO         1012    i.rt_init_stack     RTX_CM4.LIB(hal_cm4.o)
-    0x080048b8   0x00000018   Code   RO          862    i.rt_mbx_init       RTX_CM4.LIB(rt_mailbox.o)
-    0x080048d0   0x000000d4   Code   RO          863    i.rt_mbx_psh        RTX_CM4.LIB(rt_mailbox.o)
-    0x080049a4   0x000000bc   Code   RO          865    i.rt_mbx_wait       RTX_CM4.LIB(rt_mailbox.o)
-    0x08004a60   0x00000010   Code   RO          984    i.rt_mut_init       RTX_CM4.LIB(rt_mutex.o)
-    0x08004a70   0x000000e4   Code   RO          985    i.rt_mut_release    RTX_CM4.LIB(rt_mutex.o)
-    0x08004b54   0x00000068   Code   RO          986    i.rt_mut_wait       RTX_CM4.LIB(rt_mutex.o)
-    0x08004bbc   0x0000007c   Code   RO         1052    i.rt_pop_req        RTX_CM4.LIB(rt_system.o)
-    0x08004c38   0x00000020   Code   RO         1053    i.rt_psh_req        RTX_CM4.LIB(rt_system.o)
-    0x08004c58   0x0000005c   Code   RO         1137    i.rt_psq_enq        RTX_CM4.LIB(rt_list.o)
-    0x08004cb4   0x00000048   Code   RO         1138    i.rt_put_dly        RTX_CM4.LIB(rt_list.o)
-    0x08004cfc   0x00000036   Code   RO         1139    i.rt_put_prio       RTX_CM4.LIB(rt_list.o)
+    0x08004764   0x0000004c   Code   RO         1311    i.rt_evt_psh        RTX_CM4.LIB(rt_event.o)
+    0x080047b0   0x00000020   Code   RO         1281    i.rt_free_box       RTX_CM4.LIB(rt_membox.o)
+    0x080047d0   0x00000028   Code   RO         1200    i.rt_get_first      RTX_CM4.LIB(rt_list.o)
+    0x080047f8   0x00000024   Code   RO         1201    i.rt_get_same_rdy_prio  RTX_CM4.LIB(rt_list.o)
+    0x0800481c   0x0000004c   Code   RO          827    i.rt_init_context   RTX_CM4.LIB(rt_task.o)
+    0x08004868   0x00000050   Code   RO         1077    i.rt_init_stack     RTX_CM4.LIB(hal_cm4.o)
+    0x080048b8   0x00000018   Code   RO          927    i.rt_mbx_init       RTX_CM4.LIB(rt_mailbox.o)
+    0x080048d0   0x000000d4   Code   RO          928    i.rt_mbx_psh        RTX_CM4.LIB(rt_mailbox.o)
+    0x080049a4   0x000000bc   Code   RO          930    i.rt_mbx_wait       RTX_CM4.LIB(rt_mailbox.o)
+    0x08004a60   0x00000010   Code   RO         1049    i.rt_mut_init       RTX_CM4.LIB(rt_mutex.o)
+    0x08004a70   0x000000e4   Code   RO         1050    i.rt_mut_release    RTX_CM4.LIB(rt_mutex.o)
+    0x08004b54   0x00000068   Code   RO         1051    i.rt_mut_wait       RTX_CM4.LIB(rt_mutex.o)
+    0x08004bbc   0x0000007c   Code   RO         1117    i.rt_pop_req        RTX_CM4.LIB(rt_system.o)
+    0x08004c38   0x00000020   Code   RO         1118    i.rt_psh_req        RTX_CM4.LIB(rt_system.o)
+    0x08004c58   0x0000005c   Code   RO         1202    i.rt_psq_enq        RTX_CM4.LIB(rt_list.o)
+    0x08004cb4   0x00000048   Code   RO         1203    i.rt_put_dly        RTX_CM4.LIB(rt_list.o)
+    0x08004cfc   0x00000036   Code   RO         1204    i.rt_put_prio       RTX_CM4.LIB(rt_list.o)
     0x08004d32   0x00000002   PAD
-    0x08004d34   0x00000014   Code   RO         1140    i.rt_put_rdy_first  RTX_CM4.LIB(rt_list.o)
-    0x08004d48   0x00000034   Code   RO         1141    i.rt_resort_prio    RTX_CM4.LIB(rt_list.o)
-    0x08004d7c   0x00000028   Code   RO         1142    i.rt_rmv_dly        RTX_CM4.LIB(rt_list.o)
-    0x08004da4   0x00000030   Code   RO         1143    i.rt_rmv_list       RTX_CM4.LIB(rt_list.o)
-    0x08004dd4   0x0000000c   Code   RO          916    i.rt_sem_init       RTX_CM4.LIB(rt_semaphore.o)
-    0x08004de0   0x00000034   Code   RO          917    i.rt_sem_psh        RTX_CM4.LIB(rt_semaphore.o)
-    0x08004e14   0x00000040   Code   RO          919    i.rt_sem_wait       RTX_CM4.LIB(rt_semaphore.o)
-    0x08004e54   0x00000024   Code   RO         1055    i.rt_stk_check      RTX_CM4.LIB(rt_system.o)
-    0x08004e78   0x00000028   Code   RO          763    i.rt_switch_req     RTX_CM4.LIB(rt_task.o)
-    0x08004ea0   0x00000154   Code   RO          764    i.rt_sys_init       RTX_CM4.LIB(rt_task.o)
-    0x08004ff4   0x00000040   Code   RO         1057    i.rt_systick        RTX_CM4.LIB(rt_system.o)
-    0x08005034   0x00000040   Code   RO         1287    i.rt_tmr_tick       RTX_CM4.LIB(rt_timer.o)
-    0x08005074   0x00000090   Code   RO          765    i.rt_tsk_create     RTX_CM4.LIB(rt_task.o)
-    0x08005104   0x0000016c   Code   RO          766    i.rt_tsk_delete     RTX_CM4.LIB(rt_task.o)
-    0x08005270   0x00000030   Code   RO          767    i.rt_tsk_pass       RTX_CM4.LIB(rt_task.o)
-    0x080052a0   0x0000008c   Code   RO          768    i.rt_tsk_prio       RTX_CM4.LIB(rt_task.o)
-    0x0800532c   0x00000010   Code   RO          769    i.rt_tsk_self       RTX_CM4.LIB(rt_task.o)
-    0x0800533c   0x0000000a   Code   RO         1432    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08004d34   0x00000014   Code   RO         1205    i.rt_put_rdy_first  RTX_CM4.LIB(rt_list.o)
+    0x08004d48   0x00000034   Code   RO         1206    i.rt_resort_prio    RTX_CM4.LIB(rt_list.o)
+    0x08004d7c   0x00000028   Code   RO         1207    i.rt_rmv_dly        RTX_CM4.LIB(rt_list.o)
+    0x08004da4   0x00000030   Code   RO         1208    i.rt_rmv_list       RTX_CM4.LIB(rt_list.o)
+    0x08004dd4   0x0000000c   Code   RO          981    i.rt_sem_init       RTX_CM4.LIB(rt_semaphore.o)
+    0x08004de0   0x00000034   Code   RO          982    i.rt_sem_psh        RTX_CM4.LIB(rt_semaphore.o)
+    0x08004e14   0x00000040   Code   RO          984    i.rt_sem_wait       RTX_CM4.LIB(rt_semaphore.o)
+    0x08004e54   0x00000024   Code   RO         1120    i.rt_stk_check      RTX_CM4.LIB(rt_system.o)
+    0x08004e78   0x00000028   Code   RO          828    i.rt_switch_req     RTX_CM4.LIB(rt_task.o)
+    0x08004ea0   0x00000154   Code   RO          829    i.rt_sys_init       RTX_CM4.LIB(rt_task.o)
+    0x08004ff4   0x00000040   Code   RO         1122    i.rt_systick        RTX_CM4.LIB(rt_system.o)
+    0x08005034   0x00000040   Code   RO         1352    i.rt_tmr_tick       RTX_CM4.LIB(rt_timer.o)
+    0x08005074   0x00000090   Code   RO          830    i.rt_tsk_create     RTX_CM4.LIB(rt_task.o)
+    0x08005104   0x0000016c   Code   RO          831    i.rt_tsk_delete     RTX_CM4.LIB(rt_task.o)
+    0x08005270   0x00000030   Code   RO          832    i.rt_tsk_pass       RTX_CM4.LIB(rt_task.o)
+    0x080052a0   0x0000008c   Code   RO          833    i.rt_tsk_prio       RTX_CM4.LIB(rt_task.o)
+    0x0800532c   0x00000010   Code   RO          834    i.rt_tsk_self       RTX_CM4.LIB(rt_task.o)
+    0x0800533c   0x0000000a   Code   RO         1497    x$fpl$fpinit        fz_wm.l(fpinit.o)
     0x08005346   0x00000002   PAD
     0x08005348   0x00000028   Data   RO            5    .constdata          rtx_conf_cm.o
-    0x08005370   0x00000010   Data   RO          439    .constdata          modbus.o
-    0x08005380   0x00000004   Data   RO         1060    .constdata          RTX_CM4.LIB(rt_system.o)
-    0x08005384   0x00000020   Data   RO         1500    Region$$Table       anon$$obj.o
+    0x08005370   0x00000010   Data   RO          504    .constdata          modbus.o
+    0x08005380   0x00000004   Data   RO         1125    .constdata          RTX_CM4.LIB(rt_system.o)
+    0x08005384   0x00000020   Data   RO         1565    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000052b0, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000148])
@@ -1711,36 +1711,36 @@ Memory Map of the image
 
     0x20000000   0x00000008   Data   RW            6    .data               rtx_conf_cm.o
     0x20000008   0x00000014   Data   RW          148    .data               system_stm32f4xx.o
-    0x2000001c   0x00000010   Data   RW          247    .data               task_modbus.o
-    0x2000002c   0x0000000c   Data   RW          333    .data               uart1.o
-    0x20000038   0x0000000e   Data   RW          383    .data               adc.o
-    0x20000046   0x00000008   Data   RW          440    .data               modbus.o
-    0x2000004e   0x00000200   Data   RW          470    .data               crc16.o
-    0x2000024e   0x00000010   Data   RW          661    .data               stm32f4xx_rcc.o
+    0x2000001c   0x00000010   Data   RW          294    .data               task_modbus.o
+    0x2000002c   0x0000000c   Data   RW          394    .data               uart1.o
+    0x20000038   0x0000000e   Data   RW          448    .data               adc.o
+    0x20000046   0x00000008   Data   RW          505    .data               modbus.o
+    0x2000004e   0x00000200   Data   RW          535    .data               crc16.o
+    0x2000024e   0x00000010   Data   RW          726    .data               stm32f4xx_rcc.o
     0x2000025e   0x00000002   PAD
-    0x20000260   0x00000008   Data   RW          771    .data               RTX_CM4.LIB(rt_task.o)
-    0x20000268   0x00000004   Data   RW          955    .data               RTX_CM4.LIB(rt_time.o)
-    0x2000026c   0x00000001   Data   RW         1013    .data               RTX_CM4.LIB(hal_cm4.o)
+    0x20000260   0x00000008   Data   RW          836    .data               RTX_CM4.LIB(rt_task.o)
+    0x20000268   0x00000004   Data   RW         1020    .data               RTX_CM4.LIB(rt_time.o)
+    0x2000026c   0x00000001   Data   RW         1078    .data               RTX_CM4.LIB(hal_cm4.o)
     0x2000026d   0x00000003   PAD
-    0x20000270   0x00000008   Data   RW         1061    .data               RTX_CM4.LIB(rt_system.o)
-    0x20000278   0x00000008   Data   RW         1288    .data               RTX_CM4.LIB(rt_timer.o)
+    0x20000270   0x00000008   Data   RW         1126    .data               RTX_CM4.LIB(rt_system.o)
+    0x20000278   0x00000008   Data   RW         1353    .data               RTX_CM4.LIB(rt_timer.o)
     0x20000280   0x000008ec   Zero   RW            4    .bss                rtx_conf_cm.o
     0x20000b6c   0x00000004   PAD
     0x20000b70   0x00000258   Zero   RW          185    .bss                main.o
-    0x20000dc8   0x0000035c   Zero   RW          246    .bss                task_modbus.o
+    0x20000dc8   0x0000035c   Zero   RW          293    .bss                task_modbus.o
     0x20001124   0x00000004   PAD
-    0x20001128   0x000004e2   Zero   RW          284    .bss                task_time.o
-    0x2000160a   0x000000ff   Zero   RW          332    .bss                uart1.o
+    0x20001128   0x000004e2   Zero   RW          331    .bss                task_time.o
+    0x2000160a   0x000000ff   Zero   RW          393    .bss                uart1.o
     0x20001709   0x00000001   PAD
-    0x2000170a   0x0000008c   Zero   RW          382    .bss                adc.o
-    0x20001796   0x0000036d   Zero   RW          438    .bss                modbus.o
+    0x2000170a   0x0000008c   Zero   RW          447    .bss                adc.o
+    0x20001796   0x0000036d   Zero   RW          503    .bss                modbus.o
     0x20001b03   0x00000001   PAD
-    0x20001b04   0x0000000a   Zero   RW          492    .bss                config.o
-    0x20001b0e   0x000030d7   Zero   RW          535    .bss                queue.o
+    0x20001b04   0x0000000a   Zero   RW          557    .bss                config.o
+    0x20001b0e   0x000030d7   Zero   RW          600    .bss                queue.o
     0x20004be5   0x00000003   PAD
-    0x20004be8   0x00000038   Zero   RW          770    .bss                RTX_CM4.LIB(rt_task.o)
-    0x20004c20   0x00000030   Zero   RW         1144    .bss                RTX_CM4.LIB(rt_list.o)
-    0x20004c50   0x00000060   Zero   RW         1336    .bss                c_w.l(libspace.o)
+    0x20004be8   0x00000038   Zero   RW          835    .bss                RTX_CM4.LIB(rt_task.o)
+    0x20004c20   0x00000030   Zero   RW         1209    .bss                RTX_CM4.LIB(rt_list.o)
+    0x20004c50   0x00000060   Zero   RW         1401    .bss                c_w.l(libspace.o)
     0x20004cb0   0x00000200   Zero   RW          173    HEAP                startup_stm32f40_41xxx.o
     0x20004eb0   0x00000400   Zero   RW          172    STACK               startup_stm32f40_41xxx.o
 
@@ -1752,12 +1752,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       612         58          0         14        140       2718   adc.o
-       208         12          0          0         10       1900   config.o
+       612         58          0         14        140       2694   adc.o
+       208         12          0          0         10       1868   config.o
        104          8          0        512          0       1495   crc16.o
-       596         42          0          0        600       5590   main.o
+       596         42          0          0        600     293646   main.o
        224         20          0          0          0       1877   misc.o
-      1058         26         16          8        877       7766   modbus.o
+      1058         26         16          8        877       7726   modbus.o
        180          0          0          0      12503       2243   queue.o
        152         26         40          8       2284     327567   rtx_conf_cm.o
         64         26        392          0       1536        812   startup_stm32f40_41xxx.o
@@ -1773,13 +1773,13 @@ Image component sizes
        144         10          0          0          0       2456   stm32f4xx_wwdg.o
          8          8          0          0          0        180   svc_table.o
        524         44          0         20          0       1846   system_stm32f4xx.o
-       500         64          0         16        860       2675   task_modbus.o
-       296         38          0          0       1250       1833   task_time.o
-       548         44          0         12        255       2850   uart1.o
-       536         74          0          0          0       3183   update.o
+       500         64          0         16        860       2643   task_modbus.o
+       296         38          0          0       1250       2331   task_time.o
+       548         44          0         12        255       2814   uart1.o
+       536         74          0          0          0       3167   update.o
 
     ----------------------------------------------------------------------
-     16200        770        480        608      20328     443492   Object Totals
+     16200        770        480        608      20328     731866   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          0          2         13          0   (incl. Padding)
 
@@ -1846,8 +1846,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     20928       1172        484        640      20528     470809   Grand Totals
-     20928       1172        484        328      20528     470809   ELF Image Totals (compressed)
+     20928       1172        484        640      20528     759183   Grand Totals
+     20928       1172        484        328      20528     759183   ELF Image Totals (compressed)
      20928       1172        484        328          0          0   ROM Totals
 
 ==============================================================================

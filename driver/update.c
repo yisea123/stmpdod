@@ -9,7 +9,7 @@ extern uint8_t Load$$LR$$LR_IROM1$$Length[];
 #define FLASH_ADDR_40000		0x08040000
 #define FLASH_Sector1_SIZE   0x4000
 #define FLASH_Sector2_SIZE   0x20000
-
+//Éý¼¶´úÂëÓÃ
 
 #define SECTOR_MASK               ((uint32_t)0xFFFFFF07)
 
