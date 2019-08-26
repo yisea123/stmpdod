@@ -62,10 +62,10 @@ __heap_limit
 
 ; Vector Table Mapped to Address 0 at Reset
                 AREA    RESET, DATA, READONLY
-                EXPORT  __Vectors
+                EXPORT  __Vectors ;全局属性
                 EXPORT  __Vectors_End
                 EXPORT  __Vectors_Size
-				IMPORT  UpdateStart
+				IMPORT  UpdateStart  ;引用外部变量
 
 __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     Reset_Handler              ; Reset Handler

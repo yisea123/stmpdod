@@ -9,19 +9,19 @@
 #pragma pack(1) //结构体对齐 一字节对齐，节省空间，如果定义四字节，或者八字节对齐。
 
 //上面设置对齐为一个字节，所以就是char 数组该结构体
-typedef union {
+typedef union { //覆盖技术
 	struct {
-		u8 slaveaddr;
-		u8 func;
+		u8 slaveaddr;//从机地址
+		u8 func;//功能号
 	} header;
 	struct {
 		u8 slaveaddr;
 		u8 func;
-		u8 addrhi;
+		u8 addrhi;//数据起始地址
 		u8 addrlo;
-		u8 numhi;
+		u8 numhi;//读取的数据个数
 		u8 numlo;
-		u8 crc[2];
+		u8 crc[2];//crc校验位
 	} master03;
 	struct {
 		u8 slaveaddr;
@@ -40,7 +40,7 @@ typedef union {
 		u8 len;
 		u8 data[246];
 		u8 crc[2];
-	} master16;
+	} master16;//请求控制用
 	struct {
 		u8 slaveaddr;
 		u8 func;
@@ -59,16 +59,16 @@ typedef union {
 typedef struct {
 	uint16_t soft_mode[32];
 	uint16_t soft_version[32];
-} DEVICE_REG_0;
+} DEVICE_REG_0;//关于传输协议约定，版本号等
 
-typedef struct {
+typedef struct {//升级用的结构
 	uint16_t cmd;
 	uint16_t addr[2];
 	uint16_t length;
 	uint16_t data[118];
 } DEVICE_REG_1;
 
-typedef struct {
+typedef struct {//上位机发送约定波特率，也是配置用
 	uint16_t threshold;
 	uint16_t slaveaddr;
 	uint16_t baudrate[2];
@@ -76,7 +76,7 @@ typedef struct {
 
 typedef struct {
 	uint16_t peakvalue[125];
-} DEVICE_REG_3;
+} DEVICE_REG_3;//关于超声波的数据
 
 #pragma pack()
 extern DEVICE_REG_0 modbusreg_0;

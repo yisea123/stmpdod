@@ -19,8 +19,8 @@ static u16 cnt = 0;
 
 void BeginRefresh(u16* peakvalue)
 {
-	os_sem_init(refresh_sem, 0);
-	ppvalue = peakvalue;
+	os_sem_init(refresh_sem, 0);//信号量为零阻塞 time
+	ppvalue = peakvalue;//需要处理的变量
 }
 
 void WaitRefresh(void)
@@ -99,9 +99,9 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 	if ((max - min) > config.threshold && ppvalue != 0) {  //过滤掉噪音
 		ppvalue[cnt++] = max - min; //125次，保存阈值
 		if (cnt == 125) {
-			ppvalue = 0;
+			//ppvalue = 0;存疑内存不能等于零，这样
 			cnt = 0;
-			isr_sem_send(refresh_sem);//这个地方会填充
+			isr_sem_send(refresh_sem);//处理完后唤醒进程
 		}
 	}
 	

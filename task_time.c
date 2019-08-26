@@ -30,7 +30,7 @@ void TimeProc(void)
 	BeginRefresh((uint16_t*)&ppvalue); 
 	while (1) { //用于填充
 		WaitRefresh();//等待信号量大于0，否则会阻塞。
-		queue_enqueue(&m_queue, &ppvalue);//加入队列
+		queue_enqueue(&m_queue, &ppvalue);//唤醒进程后加入队列
 	}
 }
 

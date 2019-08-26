@@ -2,7 +2,8 @@
 #include "main.h"
 #include "modbus.h"
 #include "crc16.h"
-DEVICE_REG_0 modbusreg_0;
+
+DEVICE_REG_0 modbusreg_0;//这里就是主要的传输部分。
 DEVICE_REG_1 modbusreg_1;
 DEVICE_REG_2 modbusreg_2;
 DEVICE_REG_3 modbusreg_3;
@@ -72,6 +73,7 @@ void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)//主机算crc校验
 	((u8*)pFrame)[len - 1] = crc;
 }
 
+
 uint8_t ModbusMasterCheckCRC(MODBUSFRAME* pFrame)
 {
 	uint16_t len = ModbusMasterFrameLength(pFrame);
@@ -104,7 +106,7 @@ void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
 	pFrame->slave03.len = 0;
 	while (addrbegin < addrend) {
 		uint16_t data;
-		if (addrbegin < 189) {
+		if (addrbegin < 189) { //根据不同地址填充数据。
 			data = _modbusreg_0[addrbegin];
 		} else if (addrbegin >= 2048 && addrbegin < 2054) {
 			data = _modbusreg_2[addrbegin - 2048];
@@ -113,7 +115,7 @@ void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
 		} else {
 			data = 0xFFFF;
 		}
-		pFrame->slave03.data[dataidx++] = data >> 8;
+		pFrame->slave03.data[dataidx++] = data >> 8; 
 		pFrame->slave03.data[dataidx++] = data;
 		pFrame->slave03.len += 2;
 		addrbegin++;

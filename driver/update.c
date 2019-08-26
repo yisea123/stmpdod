@@ -76,7 +76,7 @@ void EraseBinArea(uint32_t size)
 	FLASH_Lock();
 
 }
-__declspec(noreturn) void __SVC_1(void)//¥Ê“…£ø
+__declspec(noreturn) void __SVC_1(void)//¥Ê“…£ø…˝º∂¥˙¬Î”√£
 {
 	typedef void (*UPDATE_START)(void);
 	UPDATE_START addr = (UPDATE_START)((*(uint32_t*)(FLASH_ADDR_40000 + 13 * 4)) - (uint32_t)Load$$LR$$LR_IROM1$$Base + FLASH_ADDR_40000);

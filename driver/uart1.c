@@ -46,9 +46,9 @@ void UART1_Init(void)
 	UART1_StatusRecv();
 }
 
-void USART1_IRQHandler(void)//接收，或发送中断
+void USART1_IRQHandler(void)
 {
-	TIM_SetCounter(TIM2, 0);
+	TIM_SetCounter(TIM2, 0);//等待主机请求，才开始计时
 	TIM_Cmd(TIM2, ENABLE);
 
 	if (USART1->SR & 0x20 ) {//接收
@@ -85,13 +85,13 @@ void TIM2_IRQHandler(void)//定时器，接收完成后
 
 void UART1_Send(uint8_t* pFrame, uint16_t len)//在task_modbus中调用发送。
 {
-	UART1_StatusSend();
+	UART1_StatusSend();//同步发送
 	send_rs485_0 = pFrame;
 	sendlen_rs485_0 = len;
 	USART1->CR1 |= 0x80;
-	while ((sendlen_rs485_0 > 0) || (USART1->SR & USART_FLAG_TC) == 0) {
+	while ((sendlen_rs485_0 > 0) || (USART1->SR & USART_FLAG_TC) == 0) {//开始发送
 		os_tsk_pass();
 	}
-	USART1->SR &= (uint16_t)~USART_FLAG_TC;
+	USART1->SR &= (uint16_t)~USART_FLAG_TC;//发送完成
 	UART1_StatusRecv();
 }
