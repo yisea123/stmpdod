@@ -47,7 +47,7 @@ void InitADC(void)
 		DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;//禁止字节拼接
 		DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
 		DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;//突发模式
-		DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;//半个字节一次，其中CPU可以获得总线
+		DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;//其中CPU可以获得总线
 		DMA_DoubleBufferModeConfig(DMA2_Stream0, (uint32_t)(ADPoint[1]), DMA_Memory_0);//dma双缓存模式，cpu在使用这一片内存时，缓存到这个内存。cpu处理数据与传输数据不打扰、
 		DMA_DoubleBufferModeCmd(DMA2_Stream0, ENABLE);//启动双缓存
 

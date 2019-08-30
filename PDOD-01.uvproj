@@ -124,7 +124,7 @@
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
           <Simulator>
-            <UseSimulator>0</UseSimulator>
+            <UseSimulator>1</UseSimulator>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -136,7 +136,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
-            <UseTarget>1</UseTarget>
+            <UseTarget>0</UseTarget>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
             <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
@@ -154,7 +154,7 @@
             <CpuDllArguments></CpuDllArguments>
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
+            <InitializationFile>.\debugConfig\debug.ini</InitializationFile>
           </SimDlls>
           <TargetDlls>
             <CpuDll></CpuDll>

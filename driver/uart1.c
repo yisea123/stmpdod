@@ -31,7 +31,7 @@ void UART1_Init(void)
 	{
 
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-		TIM_TimeBaseStructure.TIM_Prescaler = 35 - 1;//3.5个字符
+		TIM_TimeBaseStructure.TIM_Prescaler = 35 - 1;//3.5个字符，35byte
 		TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 		TIM_TimeBaseStructure.TIM_Period = SystemCoreClock / 2 / baudrate - 1; // 84Mhz / 9600   ((1+TIM_Prescaler )/84M)*(1+TIM_Period )=((1+7199)/72M)*(1+9999)
 		TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -43,7 +43,7 @@ void UART1_Init(void)
 
 	USART_Cmd(USART1, ENABLE);
 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
-	UART1_StatusRecv();
+	UART1_StatusRecv();//配置开始接受，接受与发送是同步的。先接受。
 }
 
 void USART1_IRQHandler(void)
@@ -72,10 +72,10 @@ __weak void ISR_UARTRS485_0(uint8_t* ptr)
 {
 }
 
-void TIM2_IRQHandler(void)//定时器，接收完成后
+void TIM2_IRQHandler(void)//定时器，接收完成后,用定时器来限制一定字节接受完成后就当modbus程序处理。
 {
-	TIM2->CR1 &= (uint16_t)~TIM_CR1_CEN;
-	TIM2->SR = (uint16_t)~TIM_IT_Update;
+	TIM2->CR1 &= (uint16_t)~TIM_CR1_CEN; //除能
+	TIM2->SR = (uint16_t)~TIM_IT_Update;//清除计时器更新标志。
 
 	if (buflen_rs485_0 >= 5) {
 		ISR_UARTRS485_0(recv_rs485_0);  //增加信号量，唤醒time_modbus进程
@@ -93,5 +93,5 @@ void UART1_Send(uint8_t* pFrame, uint16_t len)//在task_modbus中调用发送。
 		os_tsk_pass();
 	}
 	USART1->SR &= (uint16_t)~USART_FLAG_TC;//发送完成
-	UART1_StatusRecv();
+	UART1_StatusRecv();//开始接受
 }
