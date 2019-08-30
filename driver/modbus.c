@@ -300,7 +300,7 @@ __asm double ModbusReg2Double(uint16_t* pReg)
 	ORR      r1, r3, LSL #16
 	BX       lr
 }
-__asm void ModbusFloat2Byte(uint8_t* pData, float fValue)
+__asm void ModbusFloat2Byte(uint8_t* pData, float fValue) // R0,R1
 {
 	STRB     r1, [r0, #0x03]
 	ASR      r1, r1, #8

@@ -104,8 +104,9 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 			isr_sem_send(refresh_sem);//处理完后唤醒进程
 		}
 	}
+	//算出发电次数和放电量，放电量是积分
 	
-	//这里没有计算积分的
+	//这里没有计算积分的，怎么算呢
 }
 
 void DMA2_Stream0_IRQHandler(void)//中断，超声波的数据采样到内存里面，要处理这些数据。
