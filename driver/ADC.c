@@ -16,6 +16,12 @@ static uint16_t ADPoint[2][ANALYSENUM];
 static OS_SEM refresh_sem;
 uint16_t* ppvalue;
 static u16 cnt = 0;
+static u16 start = 0;
+static u16 end = 0;
+static u16 electricCnt = 0;
+static u8 isFirst = 1;
+static u16 hdt = 100;
+static u16 evtTime = 0;
 
 void BeginRefresh(u16* peakvalue)
 {
@@ -26,6 +32,18 @@ void BeginRefresh(u16* peakvalue)
 void WaitRefresh(void)
 {
 	os_sem_wait(refresh_sem, 0xFFFF);//型号量约束
+}
+
+void Tim4_Init(){
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+	TIM_TimeBaseInitStructure.TIM_Period = 8400 - 1; 	//1s
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 84 - 1;//1us
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0;
+	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
+	TIM_Cmd(TIM4, ENABLE);//开始计时
 }
 
 void InitADC(void)
@@ -81,14 +99,31 @@ void InitADC(void)
 	DMA_ClearFlag(DMA2_Stream0, DMA_FLAG_TCIF0);//清除通道标志位
 	ADC1->CR2 &= ~(1 << 30);
 	ADC1->CR2 |= (1 << 30); //软件开启转换
-
+	Tim4_Init();//初始化tim4;
 }
 
+
+
+void IntegralElectric(){//积分电量。
+	
+	
+	
+}
+
+
+/*
+
+撞击和撞击计数：超过门槛并是某一通道获取数据的任何信号称之为一个撞击，所测得的撞击个数，可分为总计数，计数率。
+
+事件计数：产生发射的一次材料局部变化成
+
+
+*/
 void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 {
 	uint16_t i;
 	uint16_t max = 0, min = 0xffff;
-	for (i = 0; i < ANALYSENUM; i++) {               //计算峰值
+	for (i = 0; i < ANALYSENUM; i++) { //计算峰值
 		if (max < points[i]) {
 			max = points[i];
 		}
@@ -96,10 +131,33 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 			min = points[i];
 		}
 	}
-	if ((max - min) > config.threshold && ppvalue != 0) {  //过滤掉噪音
+	if ((max - min) > config.threshold && ppvalue != 0) { //过滤掉噪音，只有去除噪音才能计算电量。
+		
+	int k = 0;
+	if(isFirst){
+			TIM_SetCounter(TIM4, 0);
+			end = start = TIM_GetCounter(TIM4);
+			isFirst = 0;
+		}else{
+			end = TIM_GetCounter(TIM4);
+			k = end - start;
+			if(k <= hdt){//同一个事件
+				 evtTime += k;
+				start = end;
+				
+			}else{//不是同一个事件
+				electricCnt ++;
+				TIM_SetCounter(TIM4, 0);
+				start = end = TIM_GetCounter(TIM4);
+				//
+				evtTime = 0;
+			}
+		}
+		//计算积分。
+		
 		ppvalue[cnt++] = max - min; //125次，保存阈值
 		if (cnt == 125) {
-			//ppvalue = 0;存疑内存不能等于零，这样
+			//ppvalue = 0;存疑？
 			cnt = 0;
 			isr_sem_send(refresh_sem);//处理完后唤醒进程
 		}

@@ -33,7 +33,7 @@ void UART1_Init(void)
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 		TIM_TimeBaseStructure.TIM_Prescaler = 35 - 1;//3.5个字符，35byte
 		TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-		TIM_TimeBaseStructure.TIM_Period = SystemCoreClock / 2 / baudrate - 1; // 84Mhz / 9600   ((1+TIM_Prescaler )/84M)*(1+TIM_Period )=((1+7199)/72M)*(1+9999)
+		TIM_TimeBaseStructure.TIM_Period = SystemCoreClock / 2 / baudrate - 1; //
 		TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 		TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
 		TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
