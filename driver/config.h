@@ -3,8 +3,8 @@
 #include "stm32f4xx_flash.h"
 
 typedef struct {
-	uint16_t threshold;//阈值
-	uint16_t hdt;//最小放电时间间隔（未知）
+	uint16_t threshold;
+	uint16_t hdt;//最小放电时间间隔
 	uint16_t slaveaddr;
 	uint16_t baudrate[2];
 	uint16_t crc;

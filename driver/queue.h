@@ -4,8 +4,10 @@
 #define   DEPTH      50
 #pragma pack(2)
 typedef struct {
-	uint16_t value[125];
+	uint16_t value[125]; //用于传输数据
 } item_t, *item_ptr;
+
+
 #pragma pack()
 
 #pragma pack(1)

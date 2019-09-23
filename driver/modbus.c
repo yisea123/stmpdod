@@ -3,22 +3,21 @@
 #include "modbus.h"
 #include "crc16.h"
 
-DEVICE_REG_0 modbusreg_0;//这里就是主要的传输部分。
+DEVICE_REG_0 modbusreg_0;
 DEVICE_REG_1 modbusreg_1;
 DEVICE_REG_2 modbusreg_2;
 DEVICE_REG_3 modbusreg_3;
 DEVICE_REG_4 modbusreg_4;
-DEVICE_REG_5 modbusreg_5;
 
 static uint16_t* const _modbusreg_0 = (uint16_t*)& modbusreg_0;
 static uint16_t* const _modbusreg_1 = (uint16_t*)& modbusreg_1;
 static uint16_t* const _modbusreg_2 = (uint16_t*)& modbusreg_2;
 static uint16_t* const _modbusreg_3 = (uint16_t*)& modbusreg_3;
+static uint16_t* const _modbusreg_4 = (uint16_t*)& modbusreg_4;
 
 MODBUSFRAME frame;
-//传输协议 modbus -rtu实现
 
-static uint16_t* AccessAddr(uint16_t addr) //主机要读取从机的地址，验证地址
+static uint16_t* AccessAddr(uint16_t addr)
 {
 	if (addr >= 1024 && addr < 1146) {
 		return _modbusreg_1 + addr - 1024;
@@ -66,8 +65,7 @@ static void ModbusMakeCRC(MODBUSFRAME* pFrame)
 	((u8*)pFrame)[len - 2] = crc >> 8;
 	((u8*)pFrame)[len - 1] = crc;
 }
-
-void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)//主机算crc校验
+void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)
 {
 	uint16_t len = ModbusMasterFrameLength(pFrame);
 	uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);
@@ -75,13 +73,12 @@ void ModbusMakeMasterCRC(MODBUSFRAME* pFrame)//主机算crc校验
 	((u8*)pFrame)[len - 1] = crc;
 }
 
-
 uint8_t ModbusMasterCheckCRC(MODBUSFRAME* pFrame)
 {
 	uint16_t len = ModbusMasterFrameLength(pFrame);
 	if (len > 2) {
-		uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);//在算一遍
-		return crc == MAKEWORD(((u8*)pFrame)[len - 1], ((u8*)pFrame)[len - 2]);//与之前传输前算的是否一致
+		uint16_t crc = CRC16((uint8_t*)pFrame, len - 2);
+		return crc == MAKEWORD(((u8*)pFrame)[len - 1], ((u8*)pFrame)[len - 2]);
 	} else {
 		return 0;
 	}
@@ -97,8 +94,8 @@ uint8_t ModbusSlaveCheckCRC(MODBUSFRAME* pFrame)
 		return 0;
 	}
 }
-//-------------------------
-void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
+
+void ModbusReadRegs(MODBUSFRAME* pFrame)
 {
 	uint16_t addrbegin, addrend;
 	int dataidx = 0;
@@ -108,16 +105,18 @@ void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
 	pFrame->slave03.len = 0;
 	while (addrbegin < addrend) {
 		uint16_t data;
-		if (addrbegin < 189) { //根据不同地址填充数据。
+		if (addrbegin < 189) {
 			data = _modbusreg_0[addrbegin];
 		} else if (addrbegin >= 2048 && addrbegin < 2054) {
 			data = _modbusreg_2[addrbegin - 2048];
 		} else if (addrbegin >= 3072 && addrbegin < (3072 + sizeof(DEVICE_REG_3))) {
 			data = _modbusreg_3[addrbegin - 3072];
-		} else {
+		}else if(addrbegin >= 4096 && addrbegin < (4096 + sizeof(DEVICE_REG_4))){
+			data = _modbusreg_4[addrbegin - 4096];
+		}else {
 			data = 0xFFFF;
 		}
-		pFrame->slave03.data[dataidx++] = data >> 8; 
+		pFrame->slave03.data[dataidx++] = data >> 8;
 		pFrame->slave03.data[dataidx++] = data;
 		pFrame->slave03.len += 2;
 		addrbegin++;
@@ -125,7 +124,7 @@ void ModbusReadRegs(MODBUSFRAME* pFrame)//读取寄存器的数据（从机）
 	ModbusMakeCRC(pFrame);
 }
 
-void ModbusWriteRegs(MODBUSFRAME* pFrame)//寄存器的数据（从机）
+void ModbusWriteRegs(MODBUSFRAME* pFrame)
 {
 	uint16_t addrbegin, addrend;
 	int dataidx = 0;
@@ -134,20 +133,20 @@ void ModbusWriteRegs(MODBUSFRAME* pFrame)//寄存器的数据（从机）
 	addrend = addrbegin + MAKEWORD(pFrame->master16.numlo, pFrame->master16.numhi);
 
 	while (addrbegin < addrend) {
-		uint16_t* reg = AccessAddr(addrbegin);//写到内存中某些地方。
+		uint16_t* reg = AccessAddr(addrbegin);
 		if (reg != 0) {
 			*reg = MAKEWORD(pFrame->master16.data[dataidx + 1], pFrame->master16.data[dataidx]);
 		}
-		addrbegin++;//以字节增加
+		addrbegin++;
 		dataidx += 2;
 	}
 	ModbusMakeCRC(pFrame);
 }
-//-------------------------------------
+
 static void ModbusSetSoftVersion(void)
 {
 	int i;
-//软件版本
+
 	for (i = 0; i < 32; i++) {
 		modbusreg_0.soft_mode[i] = 0;
 	}
@@ -170,7 +169,7 @@ static void ModbusSetSoftVersion(void)
 
 void ModbusInit(void)
 {
-	ModbusSetSoftVersion();//初始化
+	ModbusSetSoftVersion();
 }
 
 uint8_t IsReadPeakVale(uint16_t addrbegin, uint16_t addrend)
@@ -245,12 +244,12 @@ __asm void ModbusI322Reg(uint16_t* pReg, int32_t nValue)
 	BX       lr
 }
 
-__asm void ModbusFloat2Reg(uint16_t* pReg, float fValue)//使用的是小段存储
+__asm void ModbusFloat2Reg(uint16_t* pReg, float fValue)
 {
-	STRH     r1, [r0, #0x02] //将r1的数据加载到r0指定的单元
-	ASR      r1, r1, #16 //算术右移 然后将r1的数右移16位，取高位
-	STRH     r1, [r0, #0x00]//将r1 存到r0的地址。
-	BX       lr //放回，回到lr记录的返回地址
+	STRH     r1, [r0, #0x02]
+	ASR      r1, r1, #16
+	STRH     r1, [r0, #0x00]
+	BX       lr
 }
 
 __asm void ModbusI642Reg(uint16_t* pReg, int64_t nValue)
@@ -302,7 +301,7 @@ __asm double ModbusReg2Double(uint16_t* pReg)
 	ORR      r1, r3, LSL #16
 	BX       lr
 }
-__asm void ModbusFloat2Byte(uint8_t* pData, float fValue) // R0,R1
+__asm void ModbusFloat2Byte(uint8_t* pData, float fValue)
 {
 	STRB     r1, [r0, #0x03]
 	ASR      r1, r1, #8

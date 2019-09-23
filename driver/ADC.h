@@ -7,6 +7,9 @@
 #define BUF_NUM          (30)
 #define ADGAIN  (3.3/4096)
 
+
+
+
 typedef struct {
 	uint16_t index;
 	uint16_t points[ONCESENDPOINT];

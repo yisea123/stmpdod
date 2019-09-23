@@ -1,6 +1,6 @@
 #include "std.h"
 
-void Reboot(void) //¸´Î»
+void Reboot(void)
 {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
 	WWDG_SetPrescaler(WWDG_Prescaler_8);
