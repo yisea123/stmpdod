@@ -7,13 +7,13 @@ extern uint8_t Load$$LR$$LR_IROM1$$Base[];
 extern uint8_t Load$$LR$$LR_IROM1$$Length[];
 
 #define FLASH_ADDR_40000		0x08040000
-#define FLASH_Sector1_SIZE   0x4000
-#define FLASH_Sector2_SIZE   0x20000
+#define FLASH_Sector1_SIZE   0x4000 //2k
+#define FLASH_Sector2_SIZE   0x20000 
 //Éý¼¶´úÂëÓÃ
 
 #define SECTOR_MASK               ((uint32_t)0xFFFFFF07)
 
-#define ADDR_FLASH_SECTOR_0     ((u32)0x08000000)
+#define ADDR_FLASH_SECTOR_0     ((u32)0x08000000) //Ò»¸öÉÈÇø2k
 #define ADDR_FLASH_SECTOR_1     ((u32)0x08004000)
 #define ADDR_FLASH_SECTOR_2     ((u32)0x08008000)
 #define ADDR_FLASH_SECTOR_3     ((u32)0x0800C000)
@@ -54,8 +54,9 @@ uint16_t  Addr2Sector(uint32_t addr)
 	return FLASH_Sector_11;
 }
 
+//Éý¼¶´úÂë¡£
 
-void UpdateBinData(BINDATA* bindata)
+void UpdateBinData(BINDATA* bindata)//ÏñÕâ²¿·ÖÐ´ÈëÉý¼¶´úÂë¡£
 {
 	uint32_t i;
 	FLASH_Unlock();
@@ -64,7 +65,7 @@ void UpdateBinData(BINDATA* bindata)
 	}
 	FLASH_Lock();
 }
-void EraseBinArea(uint32_t size)
+void EraseBinArea(uint32_t size) //²Á³ýromÄÚÈÝ
 {
 	uint32_t addr;
 	FLASH_Unlock();
@@ -74,15 +75,15 @@ void EraseBinArea(uint32_t size)
 		FLASH_EraseSector(Addr2Sector(addr), VoltageRange_3);
 	}
 	FLASH_Lock();
-
 }
+
 __declspec(noreturn) void __SVC_1(void)//´æÒÉ£¿Éý¼¶´úÂëÓÃ£
 {
 	typedef void (*UPDATE_START)(void);
 	UPDATE_START addr = (UPDATE_START)((*(uint32_t*)(FLASH_ADDR_40000 + 13 * 4)) - (uint32_t)Load$$LR$$LR_IROM1$$Base + FLASH_ADDR_40000);
 	__disable_irq();
 	__disable_fault_irq();
-	SCB->VTOR = FLASH_ADDR_40000;
+	SCB->VTOR = FLASH_ADDR_40000;//ÖÐ¶ÏÏòÁ¿±í¸ú»»
 	addr();
 }
 

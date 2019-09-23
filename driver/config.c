@@ -12,6 +12,7 @@ CONFIG config;
 static void Config_Default()
 {
 	config.threshold = 1000;//峰峰值的阈值
+	config.hdt = 15;//最小放电时间间隔 单位us
 	ModbusI322Reg(config.baudrate, 9600);
 	config.slaveaddr = 1;
 
@@ -26,7 +27,7 @@ void Config_Init()//得到写入flash得配置信息
 	uint16_t nLen = sizeof(config) / 2;
 	uint16_t i = 0;
 	while (nLen > 0) {
-		*pData = *((uint16_t*)(FLASH_SAVE_ADDR + i));
+		*pData = *((uint16_t*)(FLASH_SAVE_ADDR + i)); //flash读直接读取地址来。
 		pData++;
 		i += 2;
 		nLen--;
@@ -40,7 +41,7 @@ void Config_Init()//得到写入flash得配置信息
 	}
 }
 
-void SaveConfig2Flash()
+void SaveConfig2Flash()//写到flash里面去。
 {
 	uint16_t i = 0;
 	uint16_t* pData = (uint16_t*)&config;
@@ -51,7 +52,7 @@ void SaveConfig2Flash()
 	                FLASH_FLAG_PGAERR | FLASH_FLAG_PGPERR | FLASH_FLAG_PGSERR);
 	FLASH_EraseSector(Addr2Sector(FLASH_SAVE_ADDR), VoltageRange_3);
 	while (nlen > 0) {
-		FLASH_ProgramHalfWord(FLASH_SAVE_ADDR + i, *pData);
+		FLASH_ProgramHalfWord(FLASH_SAVE_ADDR + i, *pData); //一次写两个字节
 		pData++;
 		i += 2;
 		nlen--;

@@ -50,9 +50,8 @@ typedef union { //覆盖技术
 		u8 numlo;
 		u8 crc[2];
 	} slave16;
+	
 } MODBUSFRAME;
-
-#pragma pack()
 
 #pragma pack(2)
 
@@ -68,8 +67,9 @@ typedef struct {//升级用的结构
 	uint16_t data[118];
 } DEVICE_REG_1;
 
-typedef struct {//上位机发送约定波特率，也是配置用
+typedef struct {//上位机发送约定波特率，也是配置用 2k
 	uint16_t threshold;
+	uint16_t hdt;
 	uint16_t slaveaddr;
 	uint16_t baudrate[2];
 } DEVICE_REG_2;
@@ -78,11 +78,21 @@ typedef struct {
 	uint16_t peakvalue[125];
 } DEVICE_REG_3;//关于超声波的数据
 
+typedef struct{
+	uint16_t electricEvtCnt;//放电次数
+}DEVICE_REG_4;
+
+typedef struct{
+	uint16_t electricEnergy[2];
+}DEVICE_REG_5;//得到放电总量
+
 #pragma pack()
-extern DEVICE_REG_0 modbusreg_0;
+extern DEVICE_REG_0 modbusreg_0; // 0
 extern DEVICE_REG_1 modbusreg_1;//1024
 extern DEVICE_REG_2 modbusreg_2;//2048
 extern DEVICE_REG_3 modbusreg_3;//3072
+extern DEVICE_REG_4 modbusreg_4;//4k
+extern DEVICE_REG_5 modbusreg_5;//5k
 
 extern OS_MUT mutModbusReg;
 extern MODBUSFRAME frame;

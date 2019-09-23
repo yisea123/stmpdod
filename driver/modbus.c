@@ -7,6 +7,8 @@ DEVICE_REG_0 modbusreg_0;//这里就是主要的传输部分。
 DEVICE_REG_1 modbusreg_1;
 DEVICE_REG_2 modbusreg_2;
 DEVICE_REG_3 modbusreg_3;
+DEVICE_REG_4 modbusreg_4;
+DEVICE_REG_5 modbusreg_5;
 
 static uint16_t* const _modbusreg_0 = (uint16_t*)& modbusreg_0;
 static uint16_t* const _modbusreg_1 = (uint16_t*)& modbusreg_1;
@@ -243,12 +245,12 @@ __asm void ModbusI322Reg(uint16_t* pReg, int32_t nValue)
 	BX       lr
 }
 
-__asm void ModbusFloat2Reg(uint16_t* pReg, float fValue)
+__asm void ModbusFloat2Reg(uint16_t* pReg, float fValue)//使用的是小段存储
 {
-	STRH     r1, [r0, #0x02] 
-	ASR      r1, r1, #16
-	STRH     r1, [r0, #0x00]
-	BX       lr
+	STRH     r1, [r0, #0x02] //将r1的数据加载到r0指定的单元
+	ASR      r1, r1, #16 //算术右移 然后将r1的数右移16位，取高位
+	STRH     r1, [r0, #0x00]//将r1 存到r0的地址。
+	BX       lr //放回，回到lr记录的返回地址
 }
 
 __asm void ModbusI642Reg(uint16_t* pReg, int64_t nValue)

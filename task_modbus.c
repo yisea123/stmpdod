@@ -37,12 +37,14 @@ __task void ModbusProc(void)
 				switch (pFrame->header.func) {//根据func选择一个功能。
 					case 3://这里就是发送数据给上位机，可以根据地址不同发送不同的数据。
 						if (addrend <= 64 || addrbegin >= 2048) {
-							if (addrbegin >= 3072 && addrend <= (3072 + 125) && queue_empty(&m_queue)) { //当峰值寄存器没有更新的时候，不返回数据
+							//如果小小于等于64就会发送版本号
+							 if (addrbegin >= 3072 && addrend <= (3072 + 125) && queue_empty(&m_queue)) { //当峰值寄存器没有更新的时候，不返回数据
 								continue;
 								} else if (addrbegin >= 3072 && addrend <= (3072 + 125) && !queue_empty(&m_queue)) {//多个进程之间通信用邮箱机制（实时系统）
 								item_t ppvalue;
 								queue_dequeue(&m_queue, &ppvalue);
 								memcpy(&modbusreg_3, &ppvalue, sizeof(modbusreg_3)); //取出发送的数据
+							
 							}
 							ModbusReadRegs(pFrame);//处理 填充ppvalue
 							os_dly_wait(1);//等待数据填充完毕

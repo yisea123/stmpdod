@@ -15,13 +15,14 @@ ADC 的工作频率21MHz，转换一个点需要15个工作周期，超声波的
 static uint16_t ADPoint[2][ANALYSENUM];
 static OS_SEM refresh_sem;
 uint16_t* ppvalue;
+
 static u16 cnt = 0;
 static u16 start = 0;
 static u16 end = 0;
 static u16 electricCnt = 0;
 static u8 isFirst = 1;
-static u16 hdt = 100;
 static u16 evtTime = 0;
+static u32 Ev = 0 ;
 
 void BeginRefresh(u16* peakvalue)
 {
@@ -99,16 +100,10 @@ void InitADC(void)
 	DMA_ClearFlag(DMA2_Stream0, DMA_FLAG_TCIF0);//清除通道标志位
 	ADC1->CR2 &= ~(1 << 30);
 	ADC1->CR2 |= (1 << 30); //软件开启转换
+	
 	Tim4_Init();//初始化tim4;
 }
 
-
-
-void IntegralElectric(){//积分电量。
-	
-	
-	
-}
 
 
 /*
@@ -123,7 +118,10 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 {
 	uint16_t i;
 	uint16_t max = 0, min = 0xffff;
+	u32 ev = 0; 
+	
 	for (i = 0; i < ANALYSENUM; i++) { //计算峰值
+		
 		if (max < points[i]) {
 			max = points[i];
 		}
@@ -131,30 +129,35 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 			min = points[i];
 		}
 	}
-	if ((max - min) > config.threshold && ppvalue != 0) { //过滤掉噪音，只有去除噪音才能计算电量。
+	if ((max - min) > config.threshold && ppvalue != 0){ //过滤掉噪音，只有去除噪音才能计算电量。
 		
-	int k = 0;
-	if(isFirst){
-			TIM_SetCounter(TIM4, 0);
-			end = start = TIM_GetCounter(TIM4);
-			isFirst = 0;
-		}else{
-			end = TIM_GetCounter(TIM4);
-			k = end - start;
-			if(k <= hdt){//同一个事件
-				 evtTime += k;
-				start = end;
-				
-			}else{//不是同一个事件
-				electricCnt ++;
-				TIM_SetCounter(TIM4, 0);
-				start = end = TIM_GetCounter(TIM4);
-				//
-				evtTime = 0;
-			}
+		int k = 0;
+		for (i = 0; i < ANALYSENUM; i++) { //计算峰值
+			ev += points[i] ; //积分
 		}
-		//计算积分。
+		Ev += ev;
 		
+		if(isFirst){
+				TIM_SetCounter(TIM4, 0);
+				end = start = TIM_GetCounter(TIM4);
+				isFirst = 0;
+			}else{
+				end = TIM_GetCounter(TIM4);
+				k = end - start;
+				if(k <= config.hdt){//同一个事件
+					 evtTime += k;
+				   start = end;
+					
+				}else{//不是同一个事件
+					electricCnt ++;
+					TIM_SetCounter(TIM4, 0);
+					start = end = TIM_GetCounter(TIM4);
+			
+					evtTime = 0;
+				}
+			}
+	//传递三个值，放电总量 u32 放电总时间 u16，u16放电次数。
+			
 		ppvalue[cnt++] = max - min; //125次，保存阈值
 		if (cnt == 125) {
 			//ppvalue = 0;存疑？
@@ -162,9 +165,7 @@ void PointsHandle(uint16_t points[ANALYSENUM])//处理函数
 			isr_sem_send(refresh_sem);//处理完后唤醒进程
 		}
 	}
-	//算出发电次数和放电量，放电量是积分
-	
-	//这里没有计算积分的，怎么算呢
+
 }
 
 void DMA2_Stream0_IRQHandler(void)//中断，超声波的数据采样到内存里面，要处理这些数据。
